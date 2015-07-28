@@ -42,9 +42,17 @@ mean(rep.len)
 use <- which(rep.len > 100)
 large.len <- rep.len[use]
 
-# from these simple statistics, it appears we still have some time left.
-mean(large.len)
-median(large.len)
-boxplot(large.len)
+# obnoxious way of getting the current year
+cur.year <- Sys.Date()
+cur.year <- as.numeric(substr(cur.year, 1, 4))
+us <- cur.year-1776
+print(c(US=us))
 
-# Should probably keep all these dates linked to the actual republic.
+# from these simple statistics, it appears we still have some time left.
+summary(large.len)
+boxplot(large.len, main="how long a republican \n government lasts",
+        ylab="years")
+points(us, pch=16)
+legend("topleft", c("length of our \n gov thus far"), pch=16)
+
+# Should probably keep all these dates linked to the actual republic. I'll change it to add these to the data frame at some point.
